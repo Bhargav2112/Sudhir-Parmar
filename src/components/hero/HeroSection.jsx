@@ -4,7 +4,7 @@ import { Download, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const BIODATA_URL = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_6958bb5c948dcfee61d603da/321430816_Biodata1.pdf";
-const HERO_IMAGE = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_6958bb5c948dcfee61d603da/159385863_IMG_20250622_162957.jpg";
+const HERO_IMAGE = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6958bd118db6e4f3518773d1/0d6602e08_IMG-20260103-WA0001.jpg";
 
 export default function HeroSection() {
   const scrollToContact = () => {
@@ -68,7 +68,7 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
@@ -80,9 +80,9 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(201, 162, 77, 0.5)" }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#C9A24D] via-[#E6C878] to-[#C9A24D] text-[#0A1D37] font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,162,77,0.6)]"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#C9A24D] via-[#E6C878] to-[#C9A24D] text-[#0A1D37] font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,162,77,0.6)] text-sm sm:text-base w-full sm:w-auto"
               >
-                <Download className="w-5 h-5" />
+                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                 Download Bio Data (PDF)
               </motion.a>
 
@@ -90,9 +90,9 @@ export default function HeroSection() {
                 onClick={scrollToContact}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#C9A24D] text-[#C9A24D] font-semibold rounded-lg transition-all duration-300 hover:bg-[#C9A24D]/10"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#C9A24D] text-[#C9A24D] font-semibold rounded-lg transition-all duration-300 hover:bg-[#C9A24D]/10 text-sm sm:text-base w-full sm:w-auto"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                 Contact Me
               </motion.button>
             </motion.div>
@@ -115,7 +115,7 @@ export default function HeroSection() {
                   <img
                     src={HERO_IMAGE}
                     alt="Sudhir Sanjaybhai Parmar"
-                    className="w-full h-full object-cover object-[center_18%]"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>

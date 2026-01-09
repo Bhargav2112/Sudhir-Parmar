@@ -4,8 +4,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import emailjs from 'emailjs-com';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -24,34 +24,35 @@ export default function ContactSection() {
   ];
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  try {
-    await emailjs.send(
-      "service_o37v7jd",        // 🔴 Your Service ID
-      "template_2l8epjs",       // 🔴 Your Template ID
-      {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      },
-      "hFYxy0cbrMDsY1gym"          // 🔴 Your Public Key
-    );
-
-    toast.success("Message sent successfully!");
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-
-    setTimeout(() => setIsSubmitted(false), 3000);
-  } catch (error) {
-    console.error(error);
-    toast.error("Failed to send message!");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'parmarsudhir2606@gmail.com'
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      
+      toast.success('Message sent successfully!');
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+      console.error('EmailJS Error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

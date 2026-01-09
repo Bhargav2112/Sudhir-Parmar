@@ -4,7 +4,7 @@ import { Download, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const BIODATA_URL = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_6958bb5c948dcfee61d603da/321430816_Biodata1.pdf";
-const HERO_IMAGE = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6958bd118db6e4f3518773d1/0d6602e08_IMG-20260103-WA0001.jpg";
+const HERO_IMAGE = "./home.jpeg";
 
 export default function HeroSection() {
   const scrollToContact = () => {

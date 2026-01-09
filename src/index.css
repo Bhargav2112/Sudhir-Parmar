@@ -1,3 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* --- Optimized Responsive Contact Layout --- */
+
+#contact {
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  /* Fluid vertical padding: scales with screen height */
+  padding-top: clamp(3rem, 8vh, 6rem);
+  padding-bottom: clamp(4rem, 10vh, 8rem);
+}
+
+/* 1. Fluid Typography & Spacing */
+#contact h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  line-height: 1.2;
+  text-align: center;
+}
+
+#contact h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+}
+
+#contact .container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  /* Dynamic horizontal gutter */
+  padding-inline: clamp(1rem, 5vw, 2.5rem);
+}
+
+/* 2. Device-Agnostic Grid Handling */
+#contact .contact-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important; /* Stack by default (mobile/tablet) */
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+@media (min-width: 1024px) {
+  #contact .contact-grid {
+    grid-template-columns: 1fr 1.2fr !important; /* Side-by-side for laptops+ */
+  }
+}
+
+/* 3. Card & Form Element Polish */
+#contact .card-glass {
+  padding: clamp(1.25rem, 4vw, 2.5rem) !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 162, 77, 0.2);
+  border-radius: 1rem;
+  height: auto;
+}
+
+/* Form Row (Name/Email) stacking logic */
+#contact .form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  #contact .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 4. Accessibility & Mobile UX Fixes */
+#contact input, 
+#contact textarea {
+  font-size: 16px !important; /* Critical: Prevents iOS auto-zoom on focus */
+  width: 100% !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+#contact input:focus, 
+#contact textarea:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #C9A24D;
+  outline: none;
+}
+
+/* 5. Responsive Button Scaling */
+#contact .submit-btn {
+  width: 100% !important;
+  max-width: 400px; /* Prevents oversized button on wide tablets */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem !important;
+}
+
+@media (min-width: 1024px) {
+  #contact .submit-btn {
+    max-width: 100%; /* Full width within the form card on desktop */
+  }
+}
+
+/* 6. Contact Info Alignment Fix */
+#contact .info-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 480px) {
+  #contact .info-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
